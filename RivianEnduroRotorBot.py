@@ -387,42 +387,48 @@ def job():
     ########################################################################################
     payload = {
         "blocks": [
-            {"type": "divider"},  # Add a divider to separate sections clearly
+            {"type": "divider"},  # Adds a visual divider
+
+            # Title with Timestamp
             {
                 "type": "section",
                 "text": {
-                    "type": "mrkdwn", "text": "*🚨Fail count by Parameter:* "
-                    + recorded_at
-                    + " to "
-                    + (one_hour_before + timedelta(hours=1)).strftime("%H:00"),
-                },
+                    "type": "mrkdwn",
+                    "text": f"*🚨 Fail Count by Parameter:* `{recorded_at} - {(one_hour_before + timedelta(hours=1)).strftime('%H:00')}`"
+                }
             },
+
+            # Fail count table - Ensures proper spacing using tab alignment
             {
                 "type": "section",
-                "text": {"type": "mrkdwn", "text": "```" + df_combined_str + "```"},
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"```COUNT\tSTATION_NAME\t\tPARAMETER_NAME\n{df_combined_str}```"
+                }
             },
+
+            # Section Header - Fails by Station Pareto
             {
                 "type": "section",
-                "text": {"type": "mrkdwn", "text": "*Fails by Station Pareto:*"},
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "*📊 Fails by Station Pareto:*"
+                }
             },
+
+            # Pareto Table - Adjusted for better alignment
             {
                 "type": "section",
-                "text": {"type": "mrkdwn", "text": "```" + df_sum_str + "```"},
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"```STATION_NAME\tCOUNT\n{df_sum_str}```"
+                }
             },
-            # {
-            #     "type": "section",
-            #     "text": {"type": "mrkdwn", "text": "*Fails by Hairpin Station:*"},
-            # },
-            # {
-            #     "type": "section",
-            #     "text": {
-            #         "type": "mrkdwn",
-            #         "text": "```" + df_hairpin_origin_str + "```",
-            #     },
-            # },
-            {"type": "divider"},  # Add a divider to separate sections clearly
+
+            {"type": "divider"}  # Adds another visual divider
         ]
     }
+
 
     if (15 <= current_hour < 16) or (5 <= current_hour < 6):
         payload["blocks"].extend(
