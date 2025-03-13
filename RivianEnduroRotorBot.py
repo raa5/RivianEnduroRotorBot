@@ -403,7 +403,7 @@ def job():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"```COUNT\tSTATION_NAME\t\tPARAMETER_NAME\n{df_combined_str}```"
+                    "text": f"```{df_combined_str}```"
                 }
             },
 
@@ -421,7 +421,7 @@ def job():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"```STATION_NAME\tCOUNT\n{df_sum_str}```"
+                    "text": f"```{df_sum_str}```"
                 }
             },
 
@@ -455,7 +455,7 @@ def job():
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "```" + df_to_table(df_combined_summary_str) + "```",
+                        "text": "```" + df_to_table(df_combined_summary) + "```",
                     },
                 },
                 {
@@ -466,7 +466,7 @@ def job():
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "```" + df_to_table(df_sum_summary_str) + "```",
+                        "text": "```" + df_to_table(df_sum_summary) + "```",
                     },
                 },
                 # {
