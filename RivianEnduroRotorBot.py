@@ -358,12 +358,12 @@ def job():
     ########################################################################################
     # Convert NaNs to 0 and ensure integer counts
     ########################################################################################
-    df_sum["COUNT"] = df_sum["COUNT"].fillna(0).astype(int)
+    # df_sum["COUNT"] = df_sum["COUNT"].fillna(0).astype(int)
 
     ########################################################################################
     # Sort results
     ########################################################################################
-    df_sum = df_sum[df_sum["COUNT"] > 0]
+    # df_sum = df_sum[df_sum["COUNT"] > 0]
     df_sum = df_sum.sort_values(["COUNT"], ascending=False, ignore_index=True)
 
     ########################################################################################
@@ -449,7 +449,7 @@ def job():
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "```" + df_to_table(df_combined_summary) + "```",
+                        "text": "```" + df_to_table(df_combined_summary_str) + "```",
                     },
                 },
                 {
@@ -460,7 +460,7 @@ def job():
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "```" + df_to_table(df_sum_summary) + "```",
+                        "text": "```" + df_to_table(df_sum_summary_str) + "```",
                     },
                 },
                 # {
@@ -488,6 +488,9 @@ def job():
     print(f"SLACK_WEBHOOK_URL Loaded: {url is not None}")
 
     response = requests.post(url, headers=headers, data=json.dumps(payload))
+    print(f"Slack API Response: {response.status_code}, {response.text}")
+
+    # response = requests.post(url, headers=headers, data=json.dumps(payload))
 
 
 ########################################################################################
