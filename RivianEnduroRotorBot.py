@@ -455,7 +455,7 @@ def job():
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "```" + df_to_table(df_combined_summary) + "```",
+                        "text": "```" + df_combined_summary_str + "```",
                     },
                 },
                 {
@@ -466,7 +466,7 @@ def job():
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "```" + df_to_table(df_sum_summary) + "```",
+                        "text": "```" + df_sum_summary_str + "```",
                     },
                 },
                 # {
