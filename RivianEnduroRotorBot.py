@@ -205,6 +205,7 @@ def job():
                 ["COUNT"], ascending=False, ignore_index=True
             )
 
+        df_combined_summary = df_combined_summary.head(10)
         ########################################################################################
         # Aggregate total failures per station (without duplicates)
         ########################################################################################
@@ -327,6 +328,7 @@ def job():
             ["COUNT"], ascending=False, ignore_index=True
         )
 
+    df_combined = df_combined.head(20)
     ########################################################################################
     # Aggregate total failures per station (without duplicates)
     ########################################################################################
